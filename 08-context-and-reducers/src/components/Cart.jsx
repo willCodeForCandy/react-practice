@@ -1,8 +1,8 @@
 import { use } from 'react';
 import { CartContext } from '../store/shopping-cart-context';
 
-export default function Cart({ onUpdateItemQuantity }) {
-  const { items } = use(CartContext);
+export default function Cart() {
+  const { items, updateCartItemQuantity } = use(CartContext);
   // use es un hook similar a useContext, incorporado en React 19
   // tiene la ventaja de que no necesita usarse en la raiz del componente (puede ir, por ejemplo, adentro de un bloque if)
 
@@ -27,11 +27,11 @@ export default function Cart({ onUpdateItemQuantity }) {
                   <span> ({formattedPrice})</span>
                 </div>
                 <div className="cart-item-actions">
-                  <button onClick={() => onUpdateItemQuantity(item.id, -1)}>
+                  <button onClick={() => updateCartItemQuantity(item.id, -1)}>
                     -
                   </button>
                   <span>{item.quantity}</span>
-                  <button onClick={() => onUpdateItemQuantity(item.id, 1)}>
+                  <button onClick={() => updateCartItemQuantity(item.id, 1)}>
                     +
                   </button>
                 </div>
